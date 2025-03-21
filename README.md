@@ -1,24 +1,24 @@
 # Solo Screen
 
-Screen is a terminal emulator written in pure PHP. It powers [Solo for Laravel](https://github.com/soloterm/solo) and
+Screen is a terminal renderer written in pure PHP. It powers [Solo for Laravel](https://github.com/soloterm/solo) and
 can be used to build rich text-based user interfaces in any PHP application.
 
 > [!NOTE]
 > Screen is a library intended to be integrated into PHP applications. It is not a standalone terminal application.
 
-## About terminal emulators
+## About terminal renderers
 
-A terminal emulator is software that replicates the functionality of a classic hardware computer terminal. It processes
-text input and output along with special control sequences (ANSI escape codes) that control formatting, cursor movement,
-and other terminal features.
+A terminal renderer processes text and ANSI escape sequences to create a virtual representation of terminal output.
+Unlike a full terminal emulator, Screen focuses specifically on correctly interpreting and rendering text content with
+formatting rather than handling input, interactive sessions, or process management.
 
-Terminal emulators interpret these escape sequences to:
+Terminal renderers interpret escape sequences to:
 
-- Position the cursor
-- Set text colors and styles (bold, underline, etc.)
-- Clear parts of the screen
+- Track cursor position
+- Apply text colors and styles (bold, underline, etc.)
+- Manage screen content
 - Handle special character sets
-- And much more
+- Generate a final rendered output
 
 Screen implements this functionality in pure PHP, allowing developers to build terminal user interfaces without relying
 on external dependencies or native code.
@@ -33,13 +33,14 @@ potentially "break out" of their visual containers and interfere with other part
 
 To solve this problem, Screen creates a virtual terminal buffer where:
 
-1. All ANSI operations (cursor movements, color changes, screen clears) happen safely within an isolated environment
+1. All ANSI operations (cursor movements, color changes, screen clears) are safely interpreted within an isolated
+   environment
 2. The final rendered state is captured after all operations are processed
 3. Only the final visual output is displayed to the user's terminal
 
 This approach provides complete control over how terminal output is rendered, ensuring that complex ANSI operations stay
 contained within their designated areas. While initially built for Solo, Screen has evolved into a standalone library
-that can be used in any PHP application requiring terminal emulation.
+that can be used in any PHP application requiring terminal rendering.
 
 ## Features
 
@@ -107,7 +108,7 @@ Screen uses multiple buffer types to track content and styling:
 
 ### ANSI processing
 
-Screen correctly handles ANSI escape sequences for:
+Screen correctly interprets ANSI escape sequences for:
 
 - Cursor movement (up, down, left, right, absolute positioning)
 - Text styling (colors, bold, italic, underline)
@@ -227,11 +228,11 @@ output:
 
 1. The test renders content in a real terminal (iTerm)
 2. It captures a screenshot of the terminal output
-3. It runs the same content through the Screen emulator
-4. It captures a screenshot of the emulated output
+3. It runs the same content through the Screen renderer
+4. It captures a screenshot of the rendered output
 5. It compares the screenshots pixel-by-pixel to ensure accuracy
 
-This testing strategy ensures that Screen's emulation accurately matches real terminal behavior, especially for complex
+This testing strategy ensures that Screen's rendering accurately matches real terminal behavior, especially for complex
 scenarios involving:
 
 - Multi-byte characters
@@ -249,7 +250,7 @@ To enable screenshots for all tests, use the following command:
 ENABLE_SCREENSHOT_TESTING=1 composer test
 ```
 
-To enable screenshots for only the tests that dont' already have fixtures, use the following command:
+To enable screenshots for only the tests that don't already have fixtures, use the following command:
 
 ```shell
 ENABLE_SCREENSHOT_TESTING=2 composer test
@@ -281,4 +282,4 @@ Solo Screen was developed by Aaron Francis. If you like it, please let me know!
 - Twitter: https://twitter.com/aarondfrancis
 - Website: https://aaronfrancis.com
 - YouTube: https://youtube.com/@aarondfrancis
-- GitHub: https://github.com/aarondfrancis/solo
+- GitHub: https://github.com/aarondfrancis

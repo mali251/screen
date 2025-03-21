@@ -1,6 +1,6 @@
 {
     "name": "soloterm/screen",
-    "description": "A terminal emulator written in pure PHP.",
+    "description": "A terminal renderer written in pure PHP.",
     "type": "library",
     "license": "MIT",
     "authors": [
