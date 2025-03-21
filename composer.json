@@ -12,7 +12,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": "^8.1",
-        "soloterm/grapheme": "^v1.0.0",
+        "soloterm/grapheme": "^v1.0.1",
         "ext-mbstring": "*"
     },
     "require-dev": {
