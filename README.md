@@ -6,7 +6,7 @@ can be used to build rich text-based user interfaces in any PHP application.
 > [!NOTE]
 > Screen is a library intended to be integrated into PHP applications. It is not a standalone terminal application.
 
-## About Terminal Emulators
+## About terminal emulators
 
 A terminal emulator is software that replicates the functionality of a classic hardware computer terminal. It processes
 text input and output along with special control sequences (ANSI escape codes) that control formatting, cursor movement,
@@ -64,7 +64,7 @@ composer require soloterm/screen
 - PHP 8.1 or higher
 - mbstring extension
 
-## Basic Usage
+## Basic usage
 
 Here's a simple example of using Screen:
 
@@ -84,7 +84,7 @@ $screen->write("\e[5;10HPositioned text");
 echo $screen->output();
 ```
 
-## Core Concepts
+## Core concepts
 
 Screen operates with several key components:
 
@@ -105,7 +105,7 @@ Screen uses multiple buffer types to track content and styling:
 - **PrintableBuffer**: Stores visible characters and handles width calculations
 - **AnsiBuffer**: Tracks styling information (colors, bold, underline, etc.)
 
-### ANSI Processing
+### ANSI processing
 
 Screen correctly handles ANSI escape sequences for:
 
@@ -114,9 +114,9 @@ Screen correctly handles ANSI escape sequences for:
 - Screen clearing and line manipulation
 - Scrolling
 
-## Advanced Features
+## Advanced features
 
-### Cursor Positioning
+### Cursor positioning
 
 ```php
 // Move cursor to position (row 5, column 10)
@@ -131,7 +131,7 @@ $screen->write("More text");
 $screen->write("\e8"); // Restore
 ```
 
-### Text Styling
+### Text styling
 
 ```php
 // Bold red text
@@ -147,7 +147,7 @@ $screen->write("\e[38;5;208mOrange text\e[0m");
 $screen->write("\e[38;2;255;100;0mCustom color\e[0m");
 ```
 
-### Screen Manipulation
+### Screen manipulation
 
 ```php
 // Clear screen
@@ -163,7 +163,7 @@ $screen->write("\e[2L");
 $screen->write("\e[2S");
 ```
 
-## Custom Integrations
+## Custom integrations
 
 You can respond to terminal queries by setting a callback:
 
@@ -177,7 +177,7 @@ $screen->respondToQueriesVia(function($response) {
 > [!NOTE]
 > This is still a work in progress. We need some more tests / use cases here.
 
-## Example: Building a Simple UI
+## Example: building a simple UI
 
 ```php
 use SoloTerm\Screen\Screen;
@@ -202,7 +202,7 @@ $screen->write("\e[7;5HPress 'q' to quit.");
 echo $screen->output();
 ```
 
-## Handling Unicode and Wide Characters
+## Handling unicode and wide characters
 
 Screen properly handles Unicode characters including emoji and CJK characters that take up multiple columns:
 
@@ -220,7 +220,7 @@ Screen includes a comprehensive testing suite that features a unique visual comp
 composer test
 ```
 
-### Visual Testing
+### Visual testing
 
 Screen employs an innovative screenshot-based testing approach (see `ComparesVisually` trait) that validates the visual
 output:
