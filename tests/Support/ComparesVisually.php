@@ -76,7 +76,7 @@ trait ComparesVisually
         $fixture = $this->getFixture($content);
 
         if (!$fixture) {
-            $this->markTestSkipped('Fixture does not exist for ' . $this->uniqueTestIdentifier[1]);
+            $this->markTestSkipped('Fixture with correct content does not exist for ' . $this->uniqueTestIdentifier[1] . '. Looked in ' . $this->fixturePath());
         }
 
         $screen = new Screen($fixture['width'], $fixture['height']);
